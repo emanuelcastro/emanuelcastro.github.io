@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blueprint Mansion • Roguelike de Arquitetura Tática</title>
+  <meta name="description" content="Desenhe sua própria fuga em Blueprint Mansion. Roguelike de arquitetura tática onde cada cômodo desenhado ganha vida. Disponível para iOS e Android.">
+  <link rel="icon" type="image/png" href="images/app_logo.png">
+  <style>
+    :root {
+      --bg-dark: #0A1422;
+      --bg-surface: #102035;
+      --bg-card: #162B46;
+      --cyan-primary: #00E5FF;
+      --cyan-dim: #008BA3;
+      --neon-green: #00E676;
+      --amber-gold: #E5A93C;
+      --text-white: #FFFFFF;
+      --text-muted: #94A3B8;
+      --border-color: rgba(0, 229, 255, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      line-height: 1.6;
+      background-image: 
+        linear-gradient(rgba(0, 229, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 229, 255, 0.05) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    header {
+      padding: 24px 20px;
+      border-bottom: 1px solid var(--border-color);
+      background: rgba(16, 32, 53, 0.85);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-white);
+    }
+
+    .brand img {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      border: 1px solid var(--cyan-primary);
+      box-shadow: 0 0 12px rgba(0, 229, 255, 0.3);
+    }
+
+    .brand-text {
+      font-family: monospace;
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--cyan-primary);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 60px 0 40px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: rgba(0, 229, 255, 0.12);
+      border: 1px solid var(--cyan-primary);
+      color: var(--cyan-primary);
+      font-family: monospace;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 900;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      font-family: monospace;
+      text-shadow: 0 0 24px rgba(0, 229, 255, 0.35);
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto 36px;
+    }
+
+    /* Screenshots Grid */
+    .screenshots-section {
+      margin: 50px 0;
+      text-align: center;
+    }
+
+    .section-title {
+      font-family: monospace;
+      font-size: 1.8rem;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+      color: var(--text-white);
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      margin-bottom: 36px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      justify-items: center;
+    }
+
+    .gallery-item {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s, border-color 0.3s;
+      max-width: 320px;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-6px);
+      border-color: var(--cyan-primary);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Features */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin: 50px 0;
+    }
+
+    .feature-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 28px 24px;
+      position: relative;
+    }
+
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 14px;
+      display: inline-block;
+    }
+
+    .feature-card h3 {
+      font-family: monospace;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: var(--cyan-primary);
+    }
+
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Support & FAQ */
+    .support-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 36px 30px;
+      margin: 60px 0;
+      text-align: center;
+    }
+
+    .support-box h2 {
+      font-family: monospace;
+      margin-bottom: 12px;
+      color: var(--text-white);
+    }
+
+    .support-box p {
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn-contact {
+      display: inline-block;
+      padding: 12px 28px;
+      background: var(--cyan-primary);
+      color: #000;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 10px;
+      font-family: monospace;
+      letter-spacing: 1px;
+      transition: opacity 0.2s;
+    }
+
+    .btn-contact:hover {
+      opacity: 0.9;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-color);
+      padding: 30px 20px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      background: var(--bg-surface);
+    }
+
+    footer a {
+      color: var(--cyan-primary);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="brand">
+        <img src="images/app_logo.png" alt="Logo Blueprint Mansion">
+        <span class="brand-text">BLUEPRINT MANSION</span>
+      </a>
+      <nav>
+        <a href="#recursos">Recursos</a>
+        <a href="#galeria">Galeria</a>
+        <a href="#suporte">Suporte</a>
+        <a href="privacy.html">Privacidade</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-badge">ROGUELIKE DE ARQUITETURA TÁTICA</div>
+      <h1>Desenhe a Sua Própria Fuga</h1>
+      <p>Um jogo onde cada cômodo desenhado no caderno de plantas ganha vida instantaneamente. Gire cartas, conecte passagens, gerencie a energia da lanterna e enfrente o Protocolo de Crise Diário.</p>
+    </section>
+
+    <!-- Galeria de Imagens -->
+    <section id="galeria" class="screenshots-section">
+      <h2 class="section-title">VISÃO DA PLANTA</h2>
+      <p class="section-subtitle">Conheça o visual e as dinâmicas de Blueprint Mansion</p>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="images/screenshot_1.png" alt="Gameplay e Rota de Fuga">
+        </div>
+        <div class="gallery-item">
+          <img src="images/screenshot_2.png" alt="Desafio Diário Inédito">
+        </div>
+        <div class="gallery-item">
+          <img src="images/screenshot_3.png" alt="Múltiplos Cenários e Protagonistas">
+        </div>
+      </div>
+    </section>
+
+    <!-- Recursos -->
+    <section id="recursos">
+      <h2 class="section-title" style="text-align: center;">RECURSOS PRINCIPAIS</h2>
+      <p class="section-subtitle" style="text-align: center;">Tudo o que torna a experiência tática única</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">📐</div>
+          <h3>Arquitetura Tática</h3>
+          <p>Gire as cartas de cômodos em 0°, 90°, 180° ou 270°. Alinhe as portas com precisão milimétrica para não fechar seu caminho com paredes sólidas.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Gestão de Energia</h3>
+          <p>Sua lanterna consome carga a cada cômodo projetado. Encontre salas com geradores a vapor antes que a bateria zere e a estrutura colapse.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔥</div>
+          <h3>Protocolo de Crise Diário</h3>
+          <p>A cada 24 horas, uma operação inédita é gerada deterministicamente com modificadores de crise extremos. Dispute a melhor pontuação e mantenha seu Streak.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🏰</div>
+          <h3>Expansões Temáticas</h3>
+          <p>Desbloqueie a Fortaleza das Relíquias com Sir Galahad ou adentre as alas misteriosas do Sanatório St. Jude com a Dra. Helen Vance.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🌐</div>
+          <h3>Português & Inglês</h3>
+          <p>Totalmente localizado em Português do Brasil e Inglês, com seleção rápida e detecção automática do sistema operacional.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎵</div>
+          <h3>Trilha Imersiva</h3>
+          <p>Design de áudio atmosférico, efeitos de passos e trilha sonora de mistério que acompanham o ritmo tenso de exploração.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Suporte e Contato -->
+    <section id="suporte" class="support-box">
+      <h2>CENTRAL DE SUPORTE AO ARQUITETO</h2>
+      <p>Precisa de ajuda, encontrou um bug ou tem sugestões de melhoria para o jogo? Entre em contato com a equipe de desenvolvimento.</p>
+      <a href="mailto:emanuelcastro.dev@gmail.com?subject=Suporte%20-%20Blueprint%20Mansion" class="btn-contact">FALAR COM SUPORTE</a>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Blueprint Mansion • Desenvolvido por Emanuel Castro. Todos os direitos reservados.</p>
+    <p style="margin-top: 8px;">
+      <a href="privacy.html">Política de Privacidade (Privacy Policy)</a> • 
+      <a href="#suporte">Suporte</a>
+    </p>
+  </footer>
+
+</body>
+</html>
+
