@@ -17,26 +17,6 @@
   <style>
     :root { --c: #7C7FF5; --cy: #00E5FF; --coral: #FF7A59; --gold: #E5A93C; }
 
-    /* tabuleiro animado do hero */
-    .board { position: relative; z-index: 1; margin: 0 auto; width: min(100%, 400px); aspect-ratio: 1;
-      border-radius: 28px; background: linear-gradient(160deg, #141B31, #0C1122);
-      border: 1px solid rgba(124,127,245,.35); box-shadow: 0 30px 80px -30px rgba(124,127,245,.6);
-      display: grid; place-items: center; padding: 8%; }
-    .board svg { width: 100%; height: 100%; overflow: visible; }
-    .board .grid line { stroke: rgba(255,255,255,.08); stroke-width: 1; }
-    .board .path { fill: none; stroke: var(--c); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round;
-      stroke-dasharray: 700; stroke-dashoffset: 700; animation: draw 4.5s var(--ease) infinite; }
-    .board .dot { fill: #0C1122; stroke: var(--c); stroke-width: 4; }
-    .board .dot.end { fill: var(--c); }
-    .board .arrow { fill: var(--cy); font-family: var(--mono); font-size: 22px; font-weight: 700; text-anchor: middle; dominant-baseline: central; }
-    .board .arrow.go { animation: leave 4.5s var(--ease) infinite; }
-    .board .arrow.go.d2 { animation-delay: .35s; }
-    .board .arrow.go.d3 { animation-delay: .7s; }
-    .board .block { fill: rgba(229,169,60,.85); animation: slide 4.5s var(--ease) infinite; }
-    @keyframes draw { 0%, 8% { stroke-dashoffset: 700; } 55%, 85% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: 0; opacity: 0; } }
-    @keyframes leave { 0%, 30% { transform: translate(0,0); opacity: 1; } 60%, 100% { transform: translate(0,-160px); opacity: 0; } }
-    @keyframes slide { 0%, 20% { transform: translateX(0); } 50%, 100% { transform: translateX(136px); } }
-    @media (prefers-reduced-motion: reduce) { .board .path, .board .arrow, .board .block { animation: none; } .board .path { stroke-dashoffset: 0; } }
 
     /* cartões de modo com mini-ilustração */
     .mode { padding: 0; overflow: hidden; }
@@ -88,18 +68,9 @@
           </div>
         </div>
         <div class="visual reveal">
-          <div class="board" aria-label="Ilustração animada das três mecânicas do Nodyx">
-            <svg viewBox="0 0 300 300">
-              <g class="grid">
-                <line x1="0" y1="60" x2="300" y2="60"/><line x1="0" y1="120" x2="300" y2="120"/><line x1="0" y1="180" x2="300" y2="180"/><line x1="0" y1="240" x2="300" y2="240"/>
-                <line x1="60" y1="0" x2="60" y2="300"/><line x1="120" y1="0" x2="120" y2="300"/><line x1="180" y1="0" x2="180" y2="300"/><line x1="240" y1="0" x2="240" y2="300"/>
-              </g>
-              <polyline class="path" points="30,30 30,150 90,150 90,90 150,90 150,210 210,210"/>
-              <circle class="dot" cx="30" cy="30" r="9"/><circle class="dot" cx="90" cy="90" r="6"/><circle class="dot" cx="150" cy="210" r="6"/><circle class="dot end" cx="210" cy="210" r="9"/>
-              <text class="arrow go" x="270" y="30">↑</text><text class="arrow go d2" x="210" y="90">↑</text><text class="arrow go d3" x="270" y="150">↑</text><text class="arrow" x="270" y="90">←</text>
-              <rect class="block" x="42" y="252" width="36" height="36" rx="8"/>
-              <rect x="222" y="252" width="36" height="36" rx="8" fill="none" stroke="rgba(229,169,60,.5)" stroke-dasharray="4 4"/>
-            </svg>
+          <div class="shots">
+            <figure class="shot a"><img src="../../assets/nodyx-3.jpg" alt="Modo Setas: setas desembaraçadas"></figure>
+            <figure class="shot b"><img src="../../assets/nodyx-4.jpg" alt="Modo Pontos: ligue todos os pontos"></figure>
           </div>
         </div>
       </div>
@@ -183,6 +154,23 @@
           <div class="card"><div class="ic">⭐</div><h3>Estrelas e recordes</h3><p>Cada fase guarda suas estrelas e o melhor tempo. Volte para melhorar a marca quando quiser.</p></div>
           <div class="card"><div class="ic">🎨</div><h3>Temas desbloqueáveis</h3><p>Avance nas fases para liberar novos visuais, como Cyber Gadget e Obsidiana & Ouro.</p></div>
           <div class="card"><div class="ic">📳</div><h3>Tátil de verdade</h3><p>Vibração háptica em cada conexão, encaixe e erro. Som ambiente opcional para relaxar.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="galeria">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="eyebrow">Galeria</div>
+          <h2>Pequenos desafios, grandes momentos.</h2>
+        </div>
+        <div class="gallery reveal">
+          <figure><img src="../../assets/nodyx-1.jpg" alt="Puzzles táteis e relaxantes" loading="lazy"><figcaption>Puzzles táteis e relaxantes</figcaption></figure>
+          <figure><img src="../../assets/nodyx-2.jpg" alt="Jornada em blocos de 30 fases" loading="lazy"><figcaption>Capítulos de 30 fases</figcaption></figure>
+          <figure><img src="../../assets/nodyx-3.jpg" alt="Modo Setas" loading="lazy"><figcaption>Modo Setas</figcaption></figure>
+          <figure><img src="../../assets/nodyx-4.jpg" alt="Modo Pontos" loading="lazy"><figcaption>Modo Pontos</figcaption></figure>
+          <figure><img src="../../assets/nodyx-5.jpg" alt="Modo Blocos deslizantes" loading="lazy"><figcaption>Modo Blocos</figcaption></figure>
+          <figure><img src="../../assets/nodyx-6.jpg" alt="Desafio Diário com ranking mundial" loading="lazy"><figcaption>Desafio Diário</figcaption></figure>
         </div>
       </div>
     </section>

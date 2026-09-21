@@ -211,39 +211,6 @@
       .shot.b { top: 60px; }
     }
 
-    /* Nodyx: tabuleiro desenhado em SVG */
-    .board {
-      position: relative; z-index: 1; margin: 0 auto; width: min(100%, 380px); aspect-ratio: 1;
-      border-radius: 28px; background: linear-gradient(160deg, #141B31, #0C1122);
-      border: 1px solid rgba(124,127,245,.35); box-shadow: 0 30px 80px -30px rgba(124,127,245,.6);
-      display: grid; place-items: center; padding: 8%;
-    }
-    .board svg { width: 100%; height: 100%; overflow: visible; }
-    .board .grid line { stroke: rgba(255,255,255,.08); stroke-width: 1; }
-    .board .path {
-      fill: none; stroke: var(--nx); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round;
-      stroke-dasharray: 700; stroke-dashoffset: 700;
-      animation: draw 4.5s var(--ease) infinite;
-    }
-    .board .dot { fill: #0C1122; stroke: var(--nx); stroke-width: 4; }
-    .board .dot.end { fill: var(--nx); }
-    .board .arrow { fill: var(--bm); font-family: var(--mono); font-size: 22px; font-weight: 700; text-anchor: middle; dominant-baseline: central; }
-    .board .arrow.go { animation: leave 4.5s var(--ease) infinite; }
-    .board .arrow.go.d2 { animation-delay: .35s; }
-    .board .arrow.go.d3 { animation-delay: .7s; }
-    .board .block { fill: rgba(229,169,60,.85); rx: 6; animation: slide 4.5s var(--ease) infinite; }
-    @keyframes draw {
-      0%, 8% { stroke-dashoffset: 700; }
-      55%, 85% { stroke-dashoffset: 0; }
-      100% { stroke-dashoffset: 0; opacity: 0; }
-    }
-    @keyframes leave {
-      0%, 30% { transform: translate(0, 0); opacity: 1; }
-      60%, 100% { transform: translate(0, -160px); opacity: 0; }
-    }
-    @keyframes slide {
-      0%, 20% { transform: translateX(0); }
-      50%, 100% { transform: translateX(136px); }
     }
 
     /* ---------- faixa "sobre" ---------- */
@@ -284,8 +251,6 @@
     .hero .reveal { transition-delay: calc(var(--i, 0) * 110ms); }
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; transform: none; transition: none; }
-      .board .path, .board .arrow, .board .block { animation: none; }
-      .board .path { stroke-dashoffset: 0; }
     }
   </style>
 </head>
@@ -363,8 +328,8 @@
         </div>
         <div class="visual reveal">
           <div class="shots">
-            <figure class="shot a"><img src="assets/blueprint-1.png" alt="Tela de gameplay do Blueprint Mansion com rota de fuga" loading="lazy"></figure>
-            <figure class="shot b"><img src="assets/blueprint-2.png" alt="Desafio diário do Blueprint Mansion" loading="lazy"></figure>
+            <figure class="shot a"><img src="assets/blueprint-1.jpg" alt="Tela de gameplay do Blueprint Mansion com rota de fuga" loading="lazy"></figure>
+            <figure class="shot b"><img src="assets/blueprint-2.jpg" alt="Desafio diário do Blueprint Mansion" loading="lazy"></figure>
           </div>
         </div>
       </div>
@@ -382,7 +347,7 @@
           <h3>Três mecânicas. Um desafio diário mundial.</h3>
           <p>Conecte pontos sem cruzar a própria linha, liberte setas do tabuleiro na ordem certa e deslize blocos até abrir caminho. Fases geradas proceduralmente, sempre com solução garantida, organizadas em capítulos que vão da Descoberta à Maestria. Minimalista, tátil e sem pressa.</p>
           <div class="chips">
-            <span>Setas</span><span>Pontos</span><span>Blocos deslizantes</span><span>Desafio Diário</span><span>5 capítulos</span><span>Modo zen</span>
+            <span>Setas</span><span>Pontos</span><span>Blocos deslizantes</span><span>Desafio Diário</span><span>5 capítulos</span><span>Dicas em sub-metas</span>
           </div>
           <div class="actions">
             <a class="btn primary" href="https://apps.apple.com/app/id6813184656" target="_blank" rel="noopener">
@@ -396,27 +361,9 @@
           </div>
         </div>
         <div class="visual reveal">
-          <div class="board" aria-label="Ilustração animada das mecânicas do Nodyx: pontos conectados, setas saindo do tabuleiro e bloco deslizante">
-            <svg viewBox="0 0 300 300">
-              <g class="grid">
-                <line x1="0" y1="60" x2="300" y2="60"/><line x1="0" y1="120" x2="300" y2="120"/><line x1="0" y1="180" x2="300" y2="180"/><line x1="0" y1="240" x2="300" y2="240"/>
-                <line x1="60" y1="0" x2="60" y2="300"/><line x1="120" y1="0" x2="120" y2="300"/><line x1="180" y1="0" x2="180" y2="300"/><line x1="240" y1="0" x2="240" y2="300"/>
-              </g>
-              <!-- pontos -->
-              <polyline class="path" points="30,30 30,150 90,150 90,90 150,90 150,210 210,210"/>
-              <circle class="dot" cx="30" cy="30" r="9"/>
-              <circle class="dot" cx="90" cy="90" r="6"/>
-              <circle class="dot" cx="150" cy="210" r="6"/>
-              <circle class="dot end" cx="210" cy="210" r="9"/>
-              <!-- setas -->
-              <text class="arrow go" x="270" y="30">↑</text>
-              <text class="arrow go d2" x="210" y="90">↑</text>
-              <text class="arrow go d3" x="270" y="150">↑</text>
-              <text class="arrow" x="270" y="90">←</text>
-              <!-- bloco deslizante -->
-              <rect class="block" x="42" y="252" width="36" height="36" rx="8"/>
-              <rect x="222" y="252" width="36" height="36" rx="8" fill="none" stroke="rgba(229,169,60,.5)" stroke-dasharray="4 4"/>
-            </svg>
+          <div class="shots">
+            <figure class="shot a"><img src="assets/nodyx-3.jpg" alt="Modo Setas do Nodyx" loading="lazy"></figure>
+            <figure class="shot b"><img src="assets/nodyx-4.jpg" alt="Modo Pontos do Nodyx" loading="lazy"></figure>
           </div>
         </div>
       </div>
@@ -434,7 +381,7 @@
           <h3>Mistério, lógica e dedução a bordo.</h3>
           <p>Alguém sabotou o suporte de vida da Estação Tramela, e só um tripulante estava no mesmo compartimento que a vítima. Cruze logs de biometria, sensores de escotilha e câmeras para posicionar cada suspeito no tabuleiro e apontar o culpado. Um suspeito por linha, um por coluna, uma única resposta certa.</p>
           <div class="chips">
-            <span>Tabuleiros 4×4 a 7×7</span><span>Caso do Dia</span><span>Modo Alerta Vermelho</span><span>Módulos da estação</span><span>Dossiê da tripulação</span>
+            <span>Tabuleiros 4×4 a 6×6</span><span>Caso do Dia</span><span>Modo Alerta Vermelho</span><span>Módulos da estação</span><span>Dossiê da tripulação</span>
           </div>
           <div class="actions">
             <!-- Quando publicar na App Store, troque este <span> por:
@@ -447,8 +394,8 @@
         </div>
         <div class="visual reveal">
           <div class="shots">
-            <figure class="shot a"><img src="assets/tramela-1.png" alt="Tabuleiro de dedução do Tramela" loading="lazy"></figure>
-            <figure class="shot b"><img src="assets/tramela-2.png" alt="Modo Alerta Vermelho do Tramela" loading="lazy"></figure>
+            <figure class="shot a"><img src="assets/tramela-2.jpg" alt="Tabuleiro de dedução do Tramela" loading="lazy"></figure>
+            <figure class="shot b"><img src="assets/tramela-4.jpg" alt="Modo Alerta Vermelho do Tramela" loading="lazy"></figure>
           </div>
         </div>
       </div>
