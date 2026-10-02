@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Emanuel Castro • Jogos de lógica para iOS e Android</title>
-  <meta name="description" content="Blueprint Mansion, Nodyx e Tramela: três jogos independentes de lógica, puzzle e dedução, feitos no Brasil para iOS e Android. Sem cadastro, sem enrolação.">
+  <meta name="description" content="Encaixe, Blueprint Mansion, Nodyx e Tramela: quatro jogos independentes de palavras, lógica, puzzle e dedução, feitos no Brasil para web, iOS e Android. Sem cadastro, sem enrolação.">
   <meta property="og:title" content="Emanuel Castro • Jogos">
-  <meta property="og:description" content="Blueprint Mansion, Nodyx e Tramela — puzzles de lógica e dedução para iOS e Android.">
+  <meta property="og:description" content="Encaixe, Blueprint Mansion, Nodyx e Tramela — palavras cruzadas, puzzles de lógica e dedução para web, iOS e Android.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://emanuelcastro.github.io/">
   <meta property="og:image" content="https://emanuelcastro.github.io/assets/blueprint-icon.png">
@@ -28,6 +28,7 @@
       --bm: #00E5FF;      /* Blueprint Mansion */
       --nx: #7C7FF5;      /* Nodyx */
       --tr: #38BDF8;      /* Tramela */
+      --en: #F2B632;      /* Encaixe */
       --gold: #E5A93C;
 
       --display: 'Unbounded', system-ui, sans-serif;
@@ -91,6 +92,7 @@
     .wordmark .dots i:nth-child(1) { background: var(--bm); }
     .wordmark .dots i:nth-child(2) { background: var(--nx); }
     .wordmark .dots i:nth-child(3) { background: var(--tr); }
+    .wordmark .dots i:nth-child(4) { background: var(--en); }
     nav { display: flex; gap: 6px; }
     nav a {
       color: var(--muted); text-decoration: none; font-size: .9rem; font-weight: 500;
@@ -259,11 +261,12 @@
 
   <header>
     <div class="wrap nav">
-      <a href="#" class="wordmark"><span class="dots"><i></i><i></i><i></i></span>Emanuel Castro · Jogos</a>
+      <a href="#" class="wordmark"><span class="dots"><i></i><i></i><i></i><i></i></span>Emanuel Castro · Jogos</a>
       <nav>
         <a href="#blueprint-mansion">Blueprint Mansion</a>
         <a href="#nodyx">Nodyx</a>
         <a href="#tramela">Tramela</a>
+        <a href="#encaixe">Encaixe</a>
         <a href="#contato" class="contact">Contato</a>
       </nav>
     </div>
@@ -275,7 +278,7 @@
       <div class="wrap">
         <div class="eyebrow reveal" style="--i:0">Estúdio independente · Brasil</div>
         <h1 class="reveal" style="--i:1">Jogos de lógica para quem gosta de <em>pensar.</em></h1>
-        <p class="lead reveal" style="--i:2">Três títulos independentes para iOS e Android. Puzzles curtos, dedução afiada e um desafio novo a cada dia. Sem cadastro, sem enrolação.</p>
+        <p class="lead reveal" style="--i:2">Quatro títulos independentes para web, iOS e Android. Puzzles curtos, dedução afiada, palavras cruzadas e um desafio novo a cada dia. Sem cadastro, sem enrolação.</p>
 
         <div class="dock reveal" style="--i:3">
           <a href="#blueprint-mansion" style="--c: var(--bm)">
@@ -290,11 +293,15 @@
             <img src="assets/tramela-icon.png" alt="">
             <span><b>Tramela</b><small>Dedução espacial</small></span>
           </a>
+          <a href="#encaixe" style="--c: var(--en)">
+            <img src="assets/encaixe-icon.png" alt="">
+            <span><b>Encaixe</b><small>Cruzadinha diária</small></span>
+          </a>
         </div>
 
         <div class="hero-meta reveal" style="--i:4">
-          <span><b>3</b> jogos</span>
-          <span><b>iOS</b> e <b>Android</b></span>
+          <span><b>4</b> jogos</span>
+          <span><b>Web</b>, <b>iOS</b> e <b>Android</b></span>
           <span><b>Português</b> e <b>inglês</b></span>
           <span><b>Desafios diários</b> em todos</span>
         </div>
@@ -401,13 +408,45 @@
       </div>
     </section>
 
+    <!-- ================= ENCAIXE ================= -->
+    <section class="game flip" id="encaixe" style="--c: var(--en)">
+      <div class="wrap">
+        <div class="copy reveal">
+          <div class="num" data-tag="Palavra cruzada diária">04</div>
+          <div class="title">
+            <img src="assets/encaixe-icon.png" alt="Ícone do Encaixe">
+            <h2>Encaixe</h2>
+          </div>
+          <h3>Uma cruzadinha por dia, a mesma para todo o Brasil.</h3>
+          <p>Uma palavra cruzada pequena, de 5 por 5, que se resolve em um ou dois minutos. À meia-noite sai a grade do dia, igual para todo mundo. As pistas falam de novela, futebol, música, comida e gíria, e a dificuldade cresce ao longo da semana. Resolveu? Compartilhe o seu tempo no grupo, sem entregar nenhuma resposta.</p>
+          <div class="chips">
+            <span>Grade 5×5</span><span>Uma grade por dia</span><span>Desafio 7×7 no fim de semana</span><span>Pistas brasileiras</span><span>Modo escuro</span>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="https://jogoencaixe.com.br/" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+              Jogar no navegador
+            </a>
+            <span class="btn soon" aria-disabled="true">App Store <small>em breve</small></span>
+            <span class="btn soon" aria-disabled="true">Google Play <small>em breve</small></span>
+          </div>
+        </div>
+        <div class="visual reveal">
+          <div class="shots">
+            <figure class="shot a"><img src="assets/encaixe-1.jpg" alt="Grade do dia do Encaixe sendo resolvida" loading="lazy"></figure>
+            <figure class="shot b"><img src="assets/encaixe-2.jpg" alt="Resultado do Encaixe com o tempo para compartilhar" loading="lazy"></figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ================= SOBRE ================= -->
     <section class="about" id="sobre">
       <div class="wrap">
         <div class="reveal">
           <div class="eyebrow">Como os jogos são feitos</div>
           <h2>Feitos por uma pessoa, jogados sem atrito.</h2>
-          <p>Desenvolvo cada jogo de ponta a ponta, do motor de geração de fases ao áudio. Os três seguem as mesmas regras: sessões curtas que cabem em qualquer intervalo, dificuldade que cresce com você e respeito total à sua privacidade.</p>
+          <p>Desenvolvo cada jogo de ponta a ponta, do motor de geração de fases ao áudio. Todos seguem as mesmas regras: sessões curtas que cabem em qualquer intervalo, dificuldade que cresce com você e respeito total à sua privacidade.</p>
         </div>
         <div class="principles reveal">
           <div class="principle"><div class="ic">🔒</div><div><b>Privacidade por padrão</b><span>Sem conta, sem login obrigatório, progresso salvo só no seu aparelho.</span></div></div>
@@ -438,6 +477,7 @@
         <a href="blueprint-mansion/privacy.html">Privacidade · Blueprint Mansion</a>
         <a href="nodyx/privacy.html">Privacidade · Nodyx</a>
         <a href="tramela/privacy.html">Privacidade · Tramela</a>
+        <a href="https://jogoencaixe.com.br/privacidade/">Privacidade · Encaixe</a>
         <a href="https://github.com/emanuelcastro" target="_blank" rel="noopener">GitHub</a>
       </div>
     </div>
